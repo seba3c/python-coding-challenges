@@ -146,15 +146,28 @@ def number_of_lines_v2(A):
     return len(points)
 
 
+def number_of_lines_v3(A):
+    points = []
+    for p1 in A:
+        ok = False
+        for p2 in points:
+            ok = p1.y * p2.x == p2.y * p1.x
+            if ok:
+                break
+        if not ok:
+            points.append(p1)
+    return len(points)
+
+
 def solution_5(A):
     count = 0
     if not A:
         return count
     t = ThreadPoolExecutor(4)
-    f1 = t.submit(number_of_lines_v2, (filter(lambda p: p.x > 0 and p.y > 0, A),))
-    f2 = t.submit(number_of_lines_v2, (filter(lambda p: p.x < 0 and p.y > 0, A),))
-    f3 = t.submit(number_of_lines_v2, (filter(lambda p: p.x < 0 and p.y < 0, A),))
-    f4 = t.submit(number_of_lines_v2, (filter(lambda p: p.x > 0 and p.y < 0, A),))
+    f1 = t.submit(number_of_lines_v3, (filter(lambda p: p.x > 0 and p.y > 0, A),))
+    f2 = t.submit(number_of_lines_v3, (filter(lambda p: p.x < 0 and p.y > 0, A),))
+    f3 = t.submit(number_of_lines_v3, (filter(lambda p: p.x < 0 and p.y < 0, A),))
+    f4 = t.submit(number_of_lines_v3, (filter(lambda p: p.x > 0 and p.y < 0, A),))
     count = f1.result() + f2.result() + f3.result() + f4.result()
     return count
 
