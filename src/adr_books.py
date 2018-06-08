@@ -11,6 +11,7 @@ Library
 E.g. Searching for "My" or "book" would match a book containing "My book", but searching for "My b" or "boo" would *not* match.
 '''
 import re
+from sre_constants import SRE_FLAG_DOTALL
 
 
 LIBRARY_DATA = """
@@ -71,7 +72,7 @@ class Library:
             if not t:
                 continue
 
-            m = re.search('.*TITLE:(.*)AUTHOR:(.*)DESCRIPTION:(.*)', t, re.DOTALL)
+            m = re.search('.*TITLE:(.*)AUTHOR:(.*)DESCRIPTION:(.*)', t, SRE_FLAG_DOTALL)
 
             title = m.group(1)
             author = m.group(2)
