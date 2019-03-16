@@ -5,9 +5,11 @@ from ast import literal_eval
 
 def queens_without_collisions(queens_positions=[]):
     queens_positions = [literal_eval(pos) for pos in queens_positions]
-    for i_pos in queens_positions:
-        for j_pos in queens_positions:
-            if i_pos[0] == j_pos[0] and i_pos[1] != j_pos[1] or i_pos[0] != j_pos[0] and i_pos[1] == j_pos[1]:
+    for i in range(0, len(queens_positions)):
+        for j in range(i + 1, len(queens_positions)):
+            i_pos = queens_positions[i]
+            j_pos = queens_positions[j]
+            if i_pos[0] == j_pos[0] or i_pos[1] == j_pos[1]:
                 return str(i_pos).replace(' ', '')
     return str(True)
 
