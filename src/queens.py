@@ -25,3 +25,9 @@ if __name__ == '__main__':
     Input = ["(2,1)", "(5,3)", "(6,3)", "(8,4)", "(3,4)", "(1,8)", "(7,7)", "(5,8)"]
     Output = "(5,3)"
     assert queens_without_collisions(Input) == Output
+
+    Input = ["(4,1)", "(7,2)", "(3,3)", "(8,4)", "(2,5)", "(5,6)", "(1,7)", "(6,8)"]
+    Output = "True"
+    assert queens_without_collisions(Input) == Output
+
+    print("OK!")
