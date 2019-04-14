@@ -5,7 +5,7 @@ from ast import literal_eval
 
 def queens_without_collisions(queens_positions=[]):
 
-    def has_collition(point_1, point_2):
+    def have_collition(point_1, point_2):
         x1, y1 = point_1[0], point_1[1]
         x2, y2 = point_2[0], point_2[1]
         # check if the points are:
@@ -19,7 +19,7 @@ def queens_without_collisions(queens_positions=[]):
         for j in range(i + 1, len(queens_positions)):
             point_1 = queens_positions[i]
             point_2 = queens_positions[j]
-            if has_collition(point_1, point_2):
+            if have_collition(point_1, point_2):
                 return str(point_1).replace(' ', '')
     return str(True)
 
